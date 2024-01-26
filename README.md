@@ -29,9 +29,9 @@ Alle Services (Apache2, MariaDB,...) werden momentan via Docker Container bereit
 
 Aktuell bestehen folgende Probleme.:
 
-- [ ] Apache2 ist erreichbar aber nicht berechtigt zum Anzeigen von Seiten
+- [x] Apache2 ist erreichbar aber nicht berechtigt zum Anzeigen von Seiten
   
-- [ ] Die MariaDB ist momentan noch nicht erreichbar.
+- [X] Die MariaDB ist momentan noch nicht erreichbar.
   
 
 Der Server selbst ist über https://clockin.webengy.de erreichbar.
