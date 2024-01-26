@@ -34,7 +34,7 @@ Aktuell bestehen folgende Probleme.:
 - [ ] Die MariaDB ist momentan noch nicht erreichbar.
   
 
-Der Server selbst ist über https://webengy.hopto.org erreichbar. Der DNS Eintrag wurde via No-IP permanent umsonst bereitgestellt.
+Der Server selbst ist über https://clockin.webengy.de erreichbar.
 
 Aus Sicherheitsgründen müssen freie Ports angefragt werden.
 
