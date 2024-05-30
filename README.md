@@ -19,9 +19,9 @@ Ziel dieses Projektes ist, ein funktionierendes Ein-und Ausstempelsystem für ei
   
 ## Arbeitspaket-Planung
 Folgendes ist eine grobe skizzierung der Arbeitspakete
-1. Aufsetzen des Webservers -
+1. Aufsetzen des Webservers -3592508
 2. Figma-Planung
-3. Login/Logout -
+3. Login/Logout -3592508
 4. Zeitstempeln
 5. Userverwaltung
 6. Urlaubsplanung
