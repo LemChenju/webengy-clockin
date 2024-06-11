@@ -8,6 +8,7 @@
     <style>
         body {
             background: #000000;
+            overflow-x: hidden; /* Verhindert horizontales Scrollen */
         }
         .bg-image {
             background-size: cover;
@@ -29,32 +30,31 @@
         }
         .dropdown-menu {
             display: none;
+            position: absolute; /* Verhindert, dass das Dropdown die Größe des Containers beeinflusst */
         }
         .dropdown:hover .dropdown-menu {
             display: block;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .username {
+            margin-bottom: 0;
         }
     </style>
 </head>
 <body>
 <section class="bg-image py-3 py-md-5" style="background-image: url('https://laravel.com/assets/img/welcome/background.svg');">
     <div class="container py-4">
-        <div class="p-5 mb-4 bg-light rounded-3">
-            <div class="container-fluid py-5">
-                <!-- Erfolgsmeldung -->
-                @if(session('success'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('success') }}
-                </div>
-                @endif
-
-                <h1 class="display-5 fw-bold">Hi, {{ auth()->user()->name }}</h1>
-                <p class="col-md-8 fs-4">Welcome to your personal dashboard.</p>
-
-                <div class="col-md-1 dropdown">
+        <div class="p-5 mb-4 bg-light rounded-3 position-relative">
+            <div class="header position-absolute top-0 end-0 mt-3 me-3">
+                <div class="dropdown">
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-user"></i>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item" href="#">Profil</a>
                         <a class="dropdown-item" href="#">Einstellungen</a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
@@ -68,14 +68,16 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="d-flex justify-content-center mt-4">
-            <div class="buttons me-2">
-                <a href="#">Zeiterfassung</a>
-            </div>
-            <div class="buttons ms-2">
-                <a href="#">Urlaubsplanung</a>
+            <div class="container-fluid py-5">
+                <h1 class="display-5 fw-bold username">Hi, {{ auth()->user()->name }}</h1>
+                <div class="d-flex justify-content-center mt-4">
+                    <div class="buttons me-2">
+                        <a href="#">Zeiterfassung</a>
+                    </div>
+                    <div class="buttons ms-2">
+                        <a href="#">Urlaubsplanung</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
