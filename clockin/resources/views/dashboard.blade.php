@@ -55,8 +55,22 @@
                         <i class="fas fa-user"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Profil</a>
-                        <a class="dropdown-item" href="#">Einstellungen</a>
+                        <a class="dropdown-item" href="{{ route('profile') }}"
+                           onclick="event.preventDefault();
+                                        document.getElementById('profile-form').submit();">
+                            Profil
+                        </a>
+                        <form id="profile-form" action="{{ route('profile') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                        <a class="dropdown-item" href="{{ route('settings') }}"
+                           onclick="event.preventDefault();
+                                        document.getElementById('settings-form').submit();">
+                            Einstellungen
+                        </a>
+                        <form id="settings-form" action="{{ route('settings') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">

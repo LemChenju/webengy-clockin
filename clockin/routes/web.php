@@ -13,4 +13,6 @@ Route::get('/registration', [AuthController::class, 'registration'])->name('regi
 Route::post('/post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
 Route::get('/dashboard', [AuthController::class, 'dashboard']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/settings',[AuthController::class, 'settings'])->name('settings');
+Route::post('/profile',[AuthController::class, 'profile'])->name('profile');
 
