@@ -16,7 +16,7 @@ class ProfileController extends Controller
 
     public function showPasswordChangeForm()
     {
-        return view('password_change');
+        return view('password.change');
     }
 
     public function updatePassword(Request $request)
