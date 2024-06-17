@@ -16,4 +16,5 @@ Route::get('/dashboard', [AuthController::class, 'dashboard']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/settings',[AuthController::class, 'settings'])->name('settings');
 Route::post('/profile',[AuthController::class, 'profile'])->name('profile');
+Route::post('/password.change',[AuthController::class, 'password.change'])->name('password.change');
 Route::put('/password/update', [ProfileController::class, 'updatePassword'])->name('password.update');
