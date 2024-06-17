@@ -15,6 +15,6 @@ Route::post('/post-registration', [AuthController::class, 'postRegistration'])->
 Route::get('/dashboard', [AuthController::class, 'dashboard']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/settings',[AuthController::class, 'settings'])->name('settings');
-Route::post('/profile',[AuthController::class, 'profile'])->name('profile');
-Route::post('/password.change',[AuthController::class, 'password.change'])->name('password.change');
-Route::put('/password/update', [ProfileController::class, 'updatePassword'])->name('password.update');
+Route::get('/profile', [ProfileController::class, 'showProfile'])->name('profile');
+Route::get('/password/change', [ProfileController::class, 'showPasswordChangeForm'])->name('password.change');
+Route::post('/password/update', [ProfileController::class, 'updatePassword'])->name('password.update');
