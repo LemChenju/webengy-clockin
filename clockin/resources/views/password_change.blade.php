@@ -54,7 +54,7 @@
                 <h1 class="display-5 fw-bold">Passwort ändern</h1>
                 <form action="{{ route('password.update') }}" method="POST">
                     @csrf
-                    @method('PUT')
+                    @method('POST')
                     <div class="form-group">
                         <label for="old_password">Altes Passwort</label>
                         <input type="password" class="form-control" id="old_password" name="old_password" required>
