@@ -30,7 +30,7 @@
                 @csrf
 
                 @session('error')
-                    <div class="alert alert-danger" role="alert"> 
+                    <div class="alert alert-danger" role="alert">
                         {{ $value }}
                     </div>
                 @endsession
@@ -39,7 +39,7 @@
                   <div class="col-12">
                     <div class="form-floating mb-3">
                       <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" placeholder="name@example.com" required>
-                      <label for="email" class="form-label">{{ __('Email Address') }}</label>
+                      <label for="email" class="form-label">{{ __('Email Addresse') }}</label>
                     </div>
                     @error('email')
                           <span class="invalid-feedback" role="alert">
@@ -50,7 +50,7 @@
                   <div class="col-12">
                     <div class="form-floating mb-3">
                       <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" value="" placeholder="Password" required>
-                      <label for="password" class="form-label">{{ __('Password') }}</label>
+                      <label for="password" class="form-label">{{ __('Passwort') }}</label>
                     </div>
                     @error('password')
                         <span class="invalid-feedback" role="alert">
