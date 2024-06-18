@@ -52,7 +52,7 @@
         <div class="p-5 mb-4 bg-light rounded-3 position-relative">
             <div class="container-fluid py-5 form-container">
                 <h1 class="display-5 fw-bold">Profil</h1>
-                <img src="{{ asset('path_to_profile_image') }}" alt="Profilbild" class="rounded-circle mb-3" width="150" height="150">
+                <img src="{{auth()->user()->profile_image ?? 'https://via.placeholder.com/150' }}" alt="Profilbild" class="rounded-circle mb-3" width="150" height="150">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" class="form-control" id="name" name="name" value="{{ auth()->user()->name }}" readonly>
@@ -61,6 +61,25 @@
                     <label for="email">E-Mail</label>
                     <input type="email" class="form-control" id="email" name="email" value="{{ auth()->user()->email }}" readonly>
                 </div>
+
+                @if (auth()->user()->profile_image)
+                    <div class="form-group">
+                        <label for="profile_image">Profilbild URL</label>
+                        <input type="text" class="form-control" id="profile_image" name="profile_image" value="{{ auth()->user()->profile_image }}" readonly>
+                    </div>
+                @else
+                    <form action="{{ route('profile.image.update') }}" method="POST" class="mt-3">
+                        @csrf
+                        <div class="form-group">
+                            <label for="profile_image">Profilbild URL</label>
+                            <input type="url" class="form-control" id="profile_image" name="profile_image" placeholder="https://example.com/image.jpg" required>
+                        </div>
+                        <div class="buttons mt-3">
+                            <button type="submit" class="btn btn-primary">Profilbild speichern</button>
+                        </div>
+                    </form>
+                @endif
+
                 <div class="buttons mt-4">
                     <a href="{{ route('password.change') }}" class="btn btn-primary">Passwort ändern</a>
                 </div>

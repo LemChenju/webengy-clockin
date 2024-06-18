@@ -22,23 +22,33 @@ class ProfileController extends Controller
     public function updatePassword(Request $request)
     {
         $validator = Validator::make($request->all(), [
-'old_password' => 'required',
-'new_password' => 'required|string|min:8|confirmed',
-]);
+            'old_password' => 'required',
+            'new_password' => 'required|string|min:8|confirmed',
+            ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator);
+        }
+        $user = Auth::user();
+            if (!Hash::check($request->old_password, $user->password)) {
+                return back()->withErrors(['old_password' => 'Das alte Passwort ist falsch.']);
+            }
 
-if ($validator->fails()) {
-return back()->withErrors($validator);
-}
+        $user->password = Hash::make($request->new_password);
+        $user->save();
 
-$user = Auth::user();
+        return redirect()->route('profile')->with('success', 'Passwort erfolgreich geändert.');
+        }
+    public function updateProfileImage(Request $request)
+    {
+        $request->validate([
+            'profile_image' => 'required|url',
+        ]);
 
-if (!Hash::check($request->old_password, $user->password)) {
-return back()->withErrors(['old_password' => 'Das alte Passwort ist falsch.']);
-}
+        $user = Auth::user();
+        $user->profile_image = $request->profile_image;
+        $user->save();
 
-$user->password = Hash::make($request->new_password);
-$user->save();
+        return redirect()->route('profile')->with('success', 'Profilbild erfolgreich aktualisiert');
+    }
 
-return redirect()->route('profile')->with('success', 'Passwort erfolgreich geändert.');
-}
 }
