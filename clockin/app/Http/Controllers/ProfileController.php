@@ -19,36 +19,42 @@ class ProfileController extends Controller
         return view('password_change');
     }
 
+    public function updateProfile(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . Auth::id(),
+            'profile_image' => 'nullable|url',
+        ]);
+
+        $user = Auth::user();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->profile_image = $request->profile_image;
+        $user->save();
+
+        return redirect()->route('profile')->with('success', 'Profil erfolgreich aktualisiert');
+    }
+
     public function updatePassword(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'old_password' => 'required',
-            'new_password' => 'required|string|min:8|confirmed',
-            ]);
-        if ($validator->fails()) {
-            return back()->withErrors($validator);
-        }
-        $user = Auth::user();
-            if (!Hash::check($request->old_password, $user->password)) {
-                return back()->withErrors(['old_password' => 'Das alte Passwort ist falsch.']);
-            }
-
-        $user->password = Hash::make($request->new_password);
-        $user->save();
-
-        return redirect()->route('profile')->with('success', 'Passwort erfolgreich geändert.');
-        }
-    public function updateProfileImage(Request $request)
-    {
-        $request->validate([
-            'profile_image' => 'required|url',
+            'new_password' => 'required|min:8|confirmed',
         ]);
 
-        $user = Auth::user();
-        $user->profile_image = $request->profile_image;
-        $user->save();
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
-        return redirect()->route('profile')->with('success', 'Profilbild erfolgreich aktualisiert');
+        if (!Hash::check($request->old_password, Auth::user()->password)) {
+            return redirect()->back()->withErrors(['old_password' => 'Das alte Passwort ist falsch'])->withInput();
+        }
+
+        Auth::user()->update([
+            'password' => Hash::make($request->new_password),
+        ]);
+
+        return redirect()->route('profile')->with('success', 'Passwort erfolgreich geändert');
     }
-
 }
