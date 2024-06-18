@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webengy Clockin - Dashboard</title>
+    <title>Webengy Clockin - Profil</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <style>
         body {
@@ -14,34 +14,39 @@
             background-size: cover;
             height: 100vh;
         }
-        .buttons a {
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .form-group {
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 15px;
+        }
+        .buttons a, .buttons button {
             display: block;
-            padding: 20px 40px;
-            font-size: 1.5rem;
+            width: 100%;
+            padding: 50px 100px;
+            font-size: 3rem;
             color: #fff;
-            background-color: #636b6f;
+            background: linear-gradient(45deg, #1d2671, #c33764);
             border: none;
             border-radius: 5px;
             text-align: center;
             text-decoration: none;
+            transition: background 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .buttons a:hover {
-            background-color: #4a5568;
+        .buttons a:hover, .buttons button:hover {
+            background: linear-gradient(45deg, #c33764, #1d2671);
+            transform: scale(1.05);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
-        .dropdown-menu {
-            display: none;
-            position: absolute; /* Verhindert, dass das Dropdown die Größe des Containers beeinflusst */
-        }
-        .dropdown:hover .dropdown-menu {
-            display: block;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-        .username {
-            margin-bottom: 0;
+        .btn-small {
+            padding: 15px 30px;
+            font-size: 1.5rem;
         }
     </style>
 </head>
@@ -82,17 +87,20 @@
                     </div>
                 </div>
             </div>
-            <div class="container-fluid py-5">
-                <h1 class="display-5 fw-bold username">Hi, {{ auth()->user()->name }}</h1>
-                <div class="d-flex justify-content-center mt-4">
-                    <div class="buttons me-2">
-                        <a href="{{ route('clockinout') }}">Zeiterfassung</a>
+            <div class="container-fluid py-5 form-container">
+                <div class="row mt-4">
+                    <div class="col buttons mt-4">
+                        <a href="{{ route('password.change') }}" class="btn btn-primary">Einstempeln</a>
                     </div>
-                    <div class="buttons ms-2">
-                        <a href="#">Urlaubsplanung</a>
+                    <div class="col buttons mt-4">
+                        <a href="{{ route('password.change') }}" class="btn btn-primary">Ausstempeln</a>
                     </div>
                 </div>
+                <div class="buttons mt-4">
+                    <a href="{{ route('password.change') }}" class="btn btn-primary" style="padding: 15px 30px; font-size: 1.5rem;">Stempelhistorie Anzeigen</a>
+                </div>
             </div>
+
         </div>
     </div>
 </section>

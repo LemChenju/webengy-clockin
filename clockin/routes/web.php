@@ -18,3 +18,4 @@ Route::post('/settings',[AuthController::class, 'settings'])->name('settings');
 Route::get('/profile', [ProfileController::class, 'showProfile'])->name('profile');
 Route::get('/password/change', [ProfileController::class, 'showPasswordChangeForm'])->name('password.change');
 Route::post('/password/update', [ProfileController::class, 'updatePassword'])->name('password.update');
+Route::post('/clockinout',[AuthController::class, 'clockinout'])->name('clockinout');
