@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0e3d3294-99f1-4cf2-a582-c3cea2b07bea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/clockin/resources/views/clockinout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/clockin/resources/views/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/clockin/resources/views/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clockin/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/clockin/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +84,7 @@
       <updated>1718016692861</updated>
       <workItem from="1718016694498" duration="1334000" />
       <workItem from="1718018263826" duration="3665000" />
-      <workItem from="1718715706101" duration="2956000" />
+      <workItem from="1718715706101" duration="3997000" />
     </task>
     <servers />
   </component>
