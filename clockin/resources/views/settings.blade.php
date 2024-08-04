@@ -26,26 +26,28 @@
         <label for="fontSizeRange" class="form-label">Schriftgröße</label>
         <input type="range" class="form-range" min="14" max="24" id="fontSizeRange">
     </div>
+
+    <!-- Rückkehr zum Dashboard -->
+    <div class="mt-5 text-center">
+        <a href="{{ route('dashboard') }}" class="btn btn-primary btn-lg">Zurück zum Dashboard</a>
+    </div>
 </div>
 
 <script>
-    // Setzen der Standardwerte beim Laden der Seite
     document.addEventListener("DOMContentLoaded", function() {
-        // Dark Mode Toggle Zustand
-        const darkModeToggle = document.getElementById('darkModeToggle');
+        // Dark Mode Einstellung anwenden
         const isDarkMode = localStorage.getItem('darkMode') === 'true';
-        darkModeToggle.checked = isDarkMode;
         if (isDarkMode) {
             document.body.classList.add('dark-mode');
         }
 
         // Schriftgröße einstellen
-        const fontSizeRange = document.getElementById('fontSizeRange');
         const fontSize = localStorage.getItem('fontSize') || '16';
         document.body.style.fontSize = fontSize + 'px';
-        fontSizeRange.value = fontSize;
 
-        // Event Listener für Dark Mode Toggle
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        darkModeToggle.checked = isDarkMode;
         darkModeToggle.addEventListener('change', function() {
             if (darkModeToggle.checked) {
                 document.body.classList.add('dark-mode');
@@ -56,7 +58,9 @@
             }
         });
 
-        // Event Listener für Schriftgrößenänderung
+        // Schriftgrößenänderung
+        const fontSizeRange = document.getElementById('fontSizeRange');
+        fontSizeRange.value = fontSize;
         fontSizeRange.addEventListener('input', function() {
             const newSize = fontSizeRange.value;
             document.body.style.fontSize = newSize + 'px';
