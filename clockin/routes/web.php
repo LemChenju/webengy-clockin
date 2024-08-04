@@ -21,3 +21,5 @@ Route::get('/password/change', [ProfileController::class, 'showPasswordChangeFor
 Route::post('/password/change', [ProfileController::class, 'updatePassword'])->name('password.update');
 Route::post('/password/update', [ProfileController::class, 'updatePassword'])->name('password.update');
 Route::post('/profile/image', [ProfileController::class, 'updateProfileImage'])->name('profile.image.update');
+Route::get('/settings', [ProfileController::class, 'showSettings'])->name('settings');
+

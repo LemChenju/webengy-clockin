@@ -57,4 +57,9 @@ class ProfileController extends Controller
 
         return redirect()->route('profile')->with('success', 'Passwort erfolgreich geändert');
     }
+    public function showSettings()
+    {
+        return view('settings');
+    }
+
 }

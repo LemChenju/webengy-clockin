@@ -9,6 +9,11 @@
         body {
             background: #000000;
             overflow-x: hidden; /* Verhindert horizontales Scrollen */
+            transition: background-color 0.3s, color 0.3s, font-size 0.3s;
+        }
+        .dark-mode {
+            background-color: #121212;
+            color: #ffffff;
         }
         .bg-image {
             background-size: cover;
