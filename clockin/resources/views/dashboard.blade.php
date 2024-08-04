@@ -7,7 +7,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <style>
         body {
-            background: #000000;
             overflow-x: hidden; /* Verhindert horizontales Scrollen */
             transition: background-color 0.3s, color 0.3s, font-size 0.3s;
         }
@@ -73,7 +72,7 @@
                                         document.getElementById('settings-form').submit();">
                             Einstellungen
                         </a>
-                        <form id="settings-form" action="{{ route('settings') }}" method="POST" class="d-none">
+                        <form id="settings-form" action="{{ route('settings') }}" method="GET" class="d-none">
                             @csrf
                         </form>
                         <a class="dropdown-item" href="{{ route('logout') }}"
@@ -88,7 +87,7 @@
                 </div>
             </div>
             <div class="container-fluid py-5">
-                <h1 class="display-5 fw-bold username">Hi, {{ auth()->user()->name }}</h1>
+                <h1 class="display-5 fw-bold username text-center">Hi, {{ auth()->user()->name }}</h1>
                 <div class="d-flex justify-content-center mt-4">
                     <div class="buttons me-2">
                         <a href="#">Zeiterfassung</a>
@@ -103,16 +102,16 @@
 </section>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-// Dark Mode Einstellung anwenden
-const isDarkMode = localStorage.getItem('darkMode') === 'true';
-if (isDarkMode) {
-document.body.classList.add('dark-mode');
-}
+        // Dark Mode Einstellung anwenden
+        const isDarkMode = localStorage.getItem('darkMode') === 'true';
+        if (isDarkMode) {
+            document.body.classList.add('dark-mode');
+        }
 
-// Schriftgröße einstellen
-const fontSize = localStorage.getItem('fontSize') || '16';
-document.body.style.fontSize = fontSize + 'px';
-});
+        // Schriftgröße einstellen
+        const fontSize = localStorage.getItem('fontSize') || '16';
+        document.body.style.fontSize = fontSize + 'px';
+    });
 </script>
 <!-- Füge FontAwesome und Bootstrap JS hinzu -->
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
