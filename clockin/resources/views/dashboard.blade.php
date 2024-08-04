@@ -117,6 +117,7 @@
         document.body.style.fontSize = fontSize + 'px';
     });
 </script>
+
 <!-- Füge FontAwesome und Bootstrap JS hinzu -->
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
