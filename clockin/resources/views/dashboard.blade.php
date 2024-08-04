@@ -34,47 +34,41 @@
         }
         .dropdown-menu {
             display: none;
-            position: absolute; /* Verhindert, dass das Dropdown die Größe des Containers beeinflusst */
+            position: absolute; /* Dropdown relativ zum Container positionieren */
+            top: 0; /* Oben im Container */
+            right: 0; /* Rechts im Container */
         }
         .dropdown:hover .dropdown-menu {
             display: block;
         }
         .header {
+            position: relative; /* Container für das Dropdown absolut positionieren */
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end; /* Positionierung auf der rechten Seite */
             align-items: flex-start;
         }
         .username {
             margin-bottom: 0;
+            text-align: center; /* Text zentrieren */
         }
     </style>
 </head>
 <body>
 <section class="bg-image py-3 py-md-5" style="background-image: url('https://laravel.com/assets/img/welcome/background.svg');">
     <div class="container py-4">
-        <div class="darkmodeChange" class="p-5 mb-4 bg-light rounded-3 position-relative">
-            <div class="header position-absolute top-0 end-0 mt-3 me-3">
-                <div class="darkmodeChange dropdown">
+        <div class="p-5 mb-4 bg-light rounded-3 position-relative darkmodeChange">
+            <div class="header">
+                <div class="dropdown">
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-user"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
-                        <a class="darkmodeText dropdown-item" href="{{ route('profile') }}"
-                           onclick="event.preventDefault();
-                                        document.getElementById('profile-form').submit();">
+                        <a class="darkmodeText dropdown-item" href="{{ route('profile') }}">
                             Profil
                         </a>
-                        <form id="profile-form" action="{{ route('profile') }}" method="GET" class="d-none">
-                            @csrf
-                        </form>
-                        <a class="darkmodeText dropdown-item" href="{{ route('settings') }}"
-                           onclick="event.preventDefault();
-                                        document.getElementById('settings-form').submit();">
+                        <a class="darkmodeText dropdown-item" href="{{ route('settings') }}">
                             Einstellungen
                         </a>
-                        <form id="settings-form" action="{{ route('settings') }}" method="GET" class="d-none">
-                            @csrf
-                        </form>
                         <a class="darkmodeText dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
@@ -87,7 +81,7 @@
                 </div>
             </div>
             <div class="container-fluid py-5">
-                <h1 class="darkmodeText display-5 fw-bold username text-center">Hi, {{ auth()->user()->name }}</h1>
+                <h1 class="darkmodeText display-5 fw-bold username">Hi, {{ auth()->user()->name }}</h1>
                 <div class="d-flex justify-content-center mt-4">
                     <div class="buttons me-2">
                         <a href="#">Zeiterfassung</a>
@@ -101,25 +95,14 @@
     </div>
 </section>
 <script>
-    const texts = document.querySelectorAll('.darkmodeText')
-    texts.forEach(element => {
-        element.classList.add("bg-dark");
-        element.style.color = 'white';  // Textfarbe auf Weiß setzen
-    });
-    const backgrounds = document.querySelectorAll('.darkmodeChange')
-    backgrounds.forEach(element => {
-        console.log(element)
-        element.classList.remove("bg-light");
-        element.classList.add("bg-dark");
-    })
     document.addEventListener("DOMContentLoaded", function() {
         // Dark Mode Einstellung anwenden
         const isDarkMode = localStorage.getItem('darkMode') === 'true';
         if (isDarkMode) {
             const texts = document.querySelectorAll('.darkmodeText')
             texts.forEach(element => {
+                element.classList.add("bg-dark");
                 element.style.color = 'white';  // Textfarbe auf Weiß setzen
-                element.style.backgroundColor = 'black'; // Hintergrundfarbe auf Schwarz setzen
             });
             const backgrounds = document.querySelectorAll('.darkmodeChange')
             backgrounds.forEach(element => {
@@ -133,7 +116,6 @@
         const fontSize = localStorage.getItem('fontSize') || '16';
         document.body.style.fontSize = fontSize + 'px';
     });
-
 </script>
 <!-- Füge FontAwesome und Bootstrap JS hinzu -->
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
