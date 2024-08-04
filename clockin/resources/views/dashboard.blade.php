@@ -101,9 +101,20 @@
         </div>
     </div>
 </section>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+// Dark Mode Einstellung anwenden
+const isDarkMode = localStorage.getItem('darkMode') === 'true';
+if (isDarkMode) {
+document.body.classList.add('dark-mode');
+}
 
+// Schriftgröße einstellen
+const fontSize = localStorage.getItem('fontSize') || '16';
+document.body.style.fontSize = fontSize + 'px';
+});
+</script>
 <!-- Füge FontAwesome und Bootstrap JS hinzu -->
-<script src="{{ asset('js/settings.js') }}"></script>
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
