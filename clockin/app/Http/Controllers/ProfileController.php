@@ -61,5 +61,9 @@ class ProfileController extends Controller
     {
         return view('settings');
     }
+    public function clockinout()
+    {
+        return view('clockinout');
+    }
 
 }
