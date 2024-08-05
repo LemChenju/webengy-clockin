@@ -22,4 +22,4 @@ Route::post('/password/change', [ProfileController::class, 'updatePassword'])->n
 Route::post('/password/update', [ProfileController::class, 'updatePassword'])->name('password.update');
 Route::post('/profile/image', [ProfileController::class, 'updateProfileImage'])->name('profile.image.update');
 Route::get('/settings', [ProfileController::class, 'showSettings'])->name('settings');
-
+Route::post('/clockinout',[AuthController::class, 'clockinout'])->name('clockinout');
