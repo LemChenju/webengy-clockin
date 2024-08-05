@@ -55,37 +55,6 @@
     <div class="container py-4">
         <div class="p-5 mb-4 bg-light rounded-3 position-relative">
             <div class="header position-absolute top-0 end-0 mt-3 me-3">
-                <div class="dropdown">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-user"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="{{ route('profile') }}"
-                           onclick="event.preventDefault();
-                                        document.getElementById('profile-form').submit();">
-                            Profil
-                        </a>
-                        <form id="profile-form" action="{{ route('profile') }}" method="GET" class="d-none">
-                            @csrf
-                        </form>
-                        <a class="dropdown-item" href="{{ route('settings') }}"
-                           onclick="event.preventDefault();
-                                        document.getElementById('settings-form').submit();">
-                            Einstellungen
-                        </a>
-                        <form id="settings-form" action="{{ route('settings') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                            Abmelden
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    </div>
-                </div>
             </div>
             <div class="container-fluid py-5 form-container">
                 <div class="row mt-4">
@@ -100,7 +69,10 @@
                     <a href="{{ route('password.change') }}" class="btn btn-primary" style="padding: 15px 30px; font-size: 1.5rem;">Stempelhistorie Anzeigen</a>
                 </div>
             </div>
-
+            <!-- Rückkehr zum Dashboard -->
+            <div class="mt-5 text-center darkmodeText">
+                <a href="{{ route('dashboard') }}" class="btn btn-primary btn-lg">Zurück zum Dashboard</a>
+            </div>
         </div>
     </div>
 </section>
