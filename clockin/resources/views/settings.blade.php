@@ -24,7 +24,7 @@
     </div>
     <div class="mt-4">
         <label for="fontSizeRange" class="form-label">Schriftgröße</label>
-        <input type="range" class="form-range" min="14" max="24" id="fontSizeRange">
+        <input type="range" class="form-range" min="0.5" max="2"  id="fontSizeRange">
     </div>
 
     <!-- Rückkehr zum Dashboard -->
@@ -42,8 +42,8 @@
         }
 
         // Schriftgröße einstellen
-        const fontSize = localStorage.getItem('fontSize') || '16';
-        document.body.style.fontSize = fontSize + 'px';
+        const fontSize = localStorage.getItem('fontSize') || '1';
+        document.body.style.fontSize = fontSize;
 
         // Dark Mode Toggle
         const darkModeToggle = document.getElementById('darkModeToggle');
@@ -63,7 +63,7 @@
         fontSizeRange.value = fontSize;
         fontSizeRange.addEventListener('input', function() {
             const newSize = fontSizeRange.value;
-            document.body.style.fontSize = newSize + 'px';
+            document.body.style.fontSize = newSize
             localStorage.setItem('fontSize', newSize);
         });
     });

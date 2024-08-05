@@ -103,6 +103,9 @@
             texts.forEach(element => {
                 element.classList.add("bg-dark");
                 element.style.color = 'white';  // Textfarbe auf Weiß setzen
+                const fontSize = localStorage.getItem('fontSize') || 1
+                const originalSize = parseFloat(window.getComputedStyle(element).fontSize);
+                element.style.fontSize = `${originalSize * fontSize}px`;
             });
             const backgrounds = document.querySelectorAll('.darkmodeChange')
             backgrounds.forEach(element => {
@@ -111,10 +114,6 @@
                 element.classList.add("bg-dark");
             })
         }
-
-        // Schriftgröße einstellen
-        const fontSize = localStorage.getItem('fontSize') || '16';
-        document.body.style.fontSize = fontSize + 'px';
     });
 </script>
 

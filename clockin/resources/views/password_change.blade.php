@@ -49,25 +49,25 @@
 <body>
 <section class="bg-image py-3 py-md-5" style="background-image: url('https://laravel.com/assets/img/welcome/background.svg');">
     <div class="container py-4">
-        <div class="p-5 mb-4 bg-light rounded-3 position-relative">
+        <div class="p-5 mb-4 bg-light rounded-3 position-relative darkmodeChange">
             <div class="container-fluid py-5 form-container">
-                <h1 class="display-5 fw-bold">Passwort ändern</h1>
+                <h1 class="darkmodeText display-5 fw-bold">Passwort ändern</h1>
                 <form action="{{ route('password.update') }}" method="POST">
                     @csrf
                     @method('POST')
                     <div class="form-group">
-                        <label for="old_password">Altes Passwort</label>
+                        <label class="darkmodeText" for="old_password">Altes Passwort</label>
                         <input type="password" class="form-control" id="old_password" name="old_password" required>
                     </div>
                     <div class="form-group">
-                        <label for="new_password">Neues Passwort</label>
+                        <label class="darkmodeText" for="new_password">Neues Passwort</label>
                         <input type="password" class="form-control" id="new_password" name="new_password" required>
                     </div>
                     <div class="form-group">
-                        <label for="new_password_confirmation">Neues Passwort wiederholen</label>
+                        <label class="darkmodeText" for="new_password_confirmation">Neues Passwort wiederholen</label>
                         <input type="password" class="form-control" id="new_password_confirmation" name="new_password_confirmation" required>
                     </div>
-                    <div class="buttons mt-4">
+                    <div class="buttons mt-4 darkmodeText">
                         <button type="submit" class="btn">Passwort ändern</button>
                     </div>
                 </form>
@@ -79,17 +79,27 @@
 <!-- Füge Bootstrap JS hinzu -->
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-// Dark Mode Einstellung anwenden
+        // Dark Mode Einstellung anwenden
         const isDarkMode = localStorage.getItem('darkMode') === 'true';
         if (isDarkMode) {
-            document.body.classList.add('dark-mode');
+            const texts = document.querySelectorAll('.darkmodeText')
+            texts.forEach(element => {
+                element.classList.add("bg-dark");
+                element.style.color = 'white';  // Textfarbe auf Weiß setzen
+                const fontSize = localStorage.getItem('fontSize') || 1
+                const originalSize = parseFloat(window.getComputedStyle(element).fontSize);
+                element.style.fontSize = `${originalSize * fontSize}px`;
+            });
+            const backgrounds = document.querySelectorAll('.darkmodeChange')
+            backgrounds.forEach(element => {
+                console.log(element)
+                element.classList.remove("bg-light");
+                element.classList.add("bg-dark");
+            })
         }
-
-// Schriftgröße einstellen
-        const fontSize = localStorage.getItem('fontSize') || '16';
-        document.body.style.fontSize = fontSize + 'px';
     });
 </script>
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.2/js/bootstrap.min.js"></script>
