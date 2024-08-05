@@ -54,7 +54,7 @@
     </style>
 </head>
 <body>
-<section class="bg-image py-3 py-md-5" style="background-image: url('https://laravel.com/assets/img/welcome/background.svg');">
+<section class="bg-image bg-dark py-3 py-md-5" style="background-image: url('https://laravel.com/assets/img/welcome/background.svg');">
     <div class="container py-4">
         <div class="p-5 mb-4 bg-light rounded-3 position-relative darkmodeChange">
             <div class="header">

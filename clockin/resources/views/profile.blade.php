@@ -60,6 +60,10 @@
                 <div class="buttons mt-4">
                     <a href="{{ route('password.change') }}" class="btn btn-primary darkmodeText">Passwort ändern</a>
                 </div>
+                <!-- Rückkehr zum Dashboard -->
+                <div class="mt-5 text-center darkmodeText">
+                    <a href="{{ route('dashboard') }}" class="btn btn-primary btn-lg">Zurück zum Dashboard</a>
+                </div>
             </div>
         </div>
     </div>
@@ -85,9 +89,6 @@
             const fontSize = localStorage.getItem('fontSize') || 1
             const originalSize = parseFloat(window.getComputedStyle(element).fontSize);
             element.style.fontSize = `${originalSize * fontSize}px`;
-            if(element.type == "submit"){
-                element.classList.add("bg-light")
-            }
         });
     });
 </script>
