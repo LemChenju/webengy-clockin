@@ -24,7 +24,7 @@
     </div>
     <div class="mt-4">
         <label for="fontSizeRange" class="form-label">Schriftgröße</label>
-        <input type="range" class="form-range" min="0.5" max="2"  id="fontSizeRange">
+        <input type="range" class="form-range" min="0.5" max="2" step="0.1" value="1" id="fontSizeRange">
     </div>
 
     <!-- Rückkehr zum Dashboard -->
