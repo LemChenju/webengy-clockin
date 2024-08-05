@@ -64,7 +64,6 @@
         </div>
     </div>
 </section>
-
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         // Dark Mode Einstellung anwenden
@@ -74,20 +73,21 @@
             texts.forEach(element => {
                 element.classList.add("bg-dark");
                 element.style.color = 'white';  // Textfarbe auf Weiß setzen
-                const fontSize = localStorage.getItem('fontSize') || 1
-                const originalSize = parseFloat(window.getComputedStyle(element).fontSize);
-                element.style.fontSize = `${originalSize * fontSize}px`;
             });
             const backgrounds = document.querySelectorAll('.darkmodeChange')
             backgrounds.forEach(element => {
-                console.log(element)
                 element.classList.remove("bg-light");
                 element.classList.add("bg-dark");
             })
         }
+        const texts = document.querySelectorAll('.darkmodeText')
+        texts.forEach(element => {
+            const fontSize = localStorage.getItem('fontSize') || 1
+            const originalSize = parseFloat(window.getComputedStyle(element).fontSize);
+            element.style.fontSize = `${originalSize * fontSize}px`;
+        });
     });
 </script>
-
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
