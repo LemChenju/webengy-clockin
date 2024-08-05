@@ -83,10 +83,8 @@
             <div class="container-fluid py-5">
                 <h1 class="darkmodeText display-5 fw-bold username">Hi, {{ auth()->user()->name }}</h1>
                 <div class="d-flex justify-content-center mt-4">
-                    <div class="buttons me-2">
-                        <form id="profile-form" action="{{ route('clockinout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
+                    <div class="buttons ms-2">
+                        <a href="{{ route('clockinout') }}" class="btn btn-primary btn-lg">Zeiterfassung</a>
                     </div>
                     <div class="buttons ms-2">
                         <a href="#">Urlaubsplanung</a>
