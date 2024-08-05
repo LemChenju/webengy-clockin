@@ -20,11 +20,6 @@
             align-items: center;
             text-align: center;
         }
-        .form-group {
-            width: 100%;
-            max-width: 400px;
-            margin-bottom: 15px;
-        }
         .buttons a, .buttons button {
             display: block;
             width: 100%;

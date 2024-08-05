@@ -18,19 +18,24 @@
             background-size: cover;
             height: 100vh;
         }
-        .buttons a {
+        .buttons a, .buttons button {
             display: block;
+            width: 100%;
             padding: 20px 40px;
             font-size: 1.5rem;
             color: #fff;
-            background-color: #636b6f;
+            background: linear-gradient(45deg, #1d2671, #c33764);
             border: none;
             border-radius: 5px;
             text-align: center;
             text-decoration: none;
+            transition: background 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .buttons a:hover {
-            background-color: #4a5568;
+        .buttons a:hover, .buttons button:hover {
+            background: linear-gradient(45deg, #c33764, #1d2671);
+            transform: scale(1.05);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
         .dropdown-menu {
             display: none;
