@@ -85,6 +85,9 @@
             const fontSize = localStorage.getItem('fontSize') || 1
             const originalSize = parseFloat(window.getComputedStyle(element).fontSize);
             element.style.fontSize = `${originalSize * fontSize}px`;
+            if(element.type == "submit"){
+                element.classList.add("bg-light")
+            }
         });
     });
 </script>
