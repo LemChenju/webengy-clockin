@@ -9,9 +9,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/login', [AuthController::class, 'index'])->name('login');
-Route::post('/post-login',[AuthController::class, 'postLogin'])->name('login.post');
+Route::post('/loginAction',[AuthController::class, 'LoginAction'])->name('login.action');
 Route::get('/registration', [AuthController::class, 'registration'])->name('register');
-Route::post('/post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
+Route::post('/registrationAction', [AuthController::class, 'RegistrationAction'])->name('register.action');
 Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/profile', [ProfileController::class, 'showProfile'])->name('profile');
