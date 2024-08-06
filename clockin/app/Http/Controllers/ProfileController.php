@@ -19,6 +19,16 @@ class ProfileController extends Controller
         return view('password_change');
     }
 
+    public function showSettings()
+    {
+        return view('settings');
+    }
+
+    public function clockinout()
+    {
+        return view('clockinout');
+    }
+
     public function updateProfile(Request $request)
     {
         $request->validate([
@@ -56,14 +66,6 @@ class ProfileController extends Controller
         ]);
 
         return redirect()->route('profile')->with('success', 'Passwort erfolgreich geändert');
-    }
-    public function showSettings()
-    {
-        return view('settings');
-    }
-    public function clockinout()
-    {
-        return view('clockinout');
     }
 
 }

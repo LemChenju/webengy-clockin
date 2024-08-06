@@ -64,16 +64,4 @@ class AuthController extends Controller{
         Auth::logout();
         return Redirect('login');
     }
-    public function settings(){
-        if(Auth::check()){
-        return view('settings');
-        }
-        return redirect('login')->withError('You do not have Access');
-    }
-    public function profile(){
-        if(Auth::check()){
-        return view('profile');
-    }
-        return redirect('login')->withError('You do not have Access');
-    }
 }

@@ -14,7 +14,6 @@ Route::get('/registration', [AuthController::class, 'registration'])->name('regi
 Route::post('/post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
 Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::post('/settings',[AuthController::class, 'settings'])->name('settings');
 Route::get('/profile', [ProfileController::class, 'showProfile'])->name('profile');
 Route::post('/profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
 Route::get('/password/change', [ProfileController::class, 'showPasswordChangeForm'])->name('password.change');
@@ -22,5 +21,4 @@ Route::post('/password/change', [ProfileController::class, 'updatePassword'])->n
 Route::post('/password/update', [ProfileController::class, 'updatePassword'])->name('password.update');
 Route::post('/profile/image', [ProfileController::class, 'updateProfileImage'])->name('profile.image.update');
 Route::get('/settings', [ProfileController::class, 'showSettings'])->name('settings');
-Route::post('/clockinout',[ProfileController::class, 'clockinout'])->name('clockinout');
 Route::get('/clockinout',[ProfileController::class, 'clockinout'])->name('clockinout');
