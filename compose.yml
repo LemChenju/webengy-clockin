@@ -1,0 +1,19 @@
+services:
+  web:
+    build:
+      dockerfile: Dockerfile
+    container_name: web
+    ports:
+      - 8000:8000
+    volumes:
+      - web:/var/www
+
+    # networks:
+    #   - web
+
+# networks:
+#   web:
+#     name: web
+
+volumes:
+  web:
