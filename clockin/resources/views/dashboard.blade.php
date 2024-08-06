@@ -39,7 +39,7 @@
         }
         .dropdown-menu {
             display: none;
-            position: absolute; /* Dropdown relativ zum Container positionieren */
+            position: absolute;
             top: 0; /* Oben im Container */
             right: 0; /* Rechts im Container */
         }
@@ -47,14 +47,14 @@
             display: block;
         }
         .header {
-            position: relative; /* Container für das Dropdown absolut positionieren */
+            position: relative;
             display: flex;
-            justify-content: flex-end; /* Positionierung auf der rechten Seite */
+            justify-content: flex-end;
             align-items: flex-start;
         }
         .username {
             margin-bottom: 0;
-            text-align: center; /* Text zentrieren */
+            text-align: center;
         }
     </style>
 </head>
