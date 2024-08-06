@@ -86,7 +86,7 @@
                 </div>
             </div>
             <div class="container-fluid py-5">
-                <h1 class="darkmodeText display-5 fw-bold username">Hi, {{ auth()->user()->name }}</h1>
+                <h1 class="darkmodeText display-5 fw-bold username">Willkommen {{ auth()->user()->name }}</h1>
                 <div class="d-flex justify-content-center mt-4">
                     <div class="buttons ms-2">
                         <a href="{{ route('clockinout') }}" class="btn btn-primary btn-lg">Zeiterfassung</a>
