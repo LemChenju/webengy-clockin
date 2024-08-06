@@ -39,7 +39,7 @@
                   <div class="col-12">
                     <div class="form-floating mb-3">
                       <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" placeholder="name@example.com" required>
-                      <label for="email" class="form-label">{{ __('Email Addresse') }}</label>
+                      <label for="email" class="form-label">{{ __('Email Adresse') }}</label>
                     </div>
                     @error('email')
                           <span class="invalid-feedback" role="alert">
