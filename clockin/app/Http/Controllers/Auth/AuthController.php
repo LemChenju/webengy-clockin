@@ -20,7 +20,7 @@ class AuthController extends Controller{
         return view ('Auth.registration');
     }
 
-    public function LoginAction(Request $request): RedirectResponse {
+    public function loginAction(Request $request): RedirectResponse {
         $request->validate([
             'email'=>'required',
             'password'=>'required',
@@ -33,7 +33,7 @@ class AuthController extends Controller{
         return redirect('login')->withError('Invalid Credentials');
     }
 
-    public function RegistrationAction(Request $request): RedirectResponse {
+    public function registrationAction(Request $request): RedirectResponse {
         $request->validate([
             'name'=>'required',
             'email'=>'required|email|unique:users',
