@@ -76,4 +76,12 @@ class AuthController extends Controller{
     }
         return redirect('login')->withError('You do not have Access');
     }
+
+    public function clockinout(){
+        if(Auth::check()){
+            return view('clockinout');
+        }
+        return redirect('login')->withError('You do not have Access');
+    }
+
 }

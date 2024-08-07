@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webengy Clockin - Profil</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mQfFtZ4unem0chTozL25U7bFBpCq5kLIVzwirBNLTOsmE4v9XmbQ2CUNLBItDJngMc7CVQZivZ/4tklYTD81g==" crossorigin="anonymous" />
     <style>
         body {
             background: #000000;
@@ -88,28 +89,15 @@
                 </div>
             </div>
             <div class="container-fluid py-5 form-container">
-                <div class="row mt-4">
-                    <form action="{{ route('stamp-in') }}" method="POST">
-                        @csrf
-                        <button type="submit">Clock In</button>
-                    </form>
-                    <form id="stamp-out" action="{{ route('stamp-out') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                    <a class="col buttons mt-4 btn btn-primary" href="{{ route('stamp-out') }}"
-                       onclick="event.preventDefault();
-                                        document.getElementById('stamp-out').submit();">
-                        Ausstempeln
-                    </a>
-                </div>
-                <form id="clockinouthistory" action="{{ route('clockinouthistory') }}" method="POST" class="d-none">
-                    @csrf
+                <form action="{{ route('generate.pdf') }}" method="POST" class="mt-4">
+                    <div class="input-group mb-3">
+                        <input type="text" id="start-date" class="form-control datepicker" placeholder="Startdatum" name="start_date" required>
+                        <input type="text" id="end-date" class="form-control datepicker" placeholder="Enddatum" name="end_date" required>
+                    </div>
+                    <div class="buttons mt-4">
+                        <button type="submit" class="btn btn-primary">Bericht generieren</button>
+                    </div>
                 </form>
-                <a class="buttons ms-2 btn btn-primary" href="{{ route('clockinouthistory') }}"
-                   onclick="event.preventDefault();
-                                        document.getElementById('clockinouthistory').submit();">
-                    Stempelhistorie
-                </a>
             </div>
 
         </div>
@@ -121,5 +109,13 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-rhwwdFEC12oTcG5lYBo+xZCm/AJ6mH7b0+6wqq4AayN5IZkS7z+KZsIc2cXkpyiKLZVbQa8G2ilrIKUax/4CnQ==" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function(){
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd'
+        });
+    });
+</script>
 </body>
 </html>

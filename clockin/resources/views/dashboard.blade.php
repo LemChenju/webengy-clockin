@@ -85,10 +85,16 @@
             <div class="container-fluid py-5">
                 <h1 class="display-5 fw-bold username">Hi, {{ auth()->user()->name }}</h1>
                 <div class="d-flex justify-content-center mt-4">
-                    <div class="buttons me-2">
-                        <form id="profile-form" action="{{ route('clockinout') }}" method="POST" class="d-none">
+                    <div class="buttons ms-2">
+                        <form id="clockinout" action="{{ route('clockinout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
+                        <a class="buttons ms-2" href="{{ route('clockinout') }}"
+                           onclick="event.preventDefault();
+                                        document.getElementById('clockinout').submit();">
+                            Stempeln
+                        </a>
+
                     </div>
                     <div class="buttons ms-2">
                         <a href="#">Urlaubsplanung</a>
