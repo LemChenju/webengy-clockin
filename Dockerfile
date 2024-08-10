@@ -1,4 +1,4 @@
-FROM php:8.2-fpm
+FROM php:8.2-apache
 
 RUN apt-get update && apt-get install -y \
     git \
@@ -8,28 +8,33 @@ RUN apt-get update && apt-get install -y \
 
 RUN  docker-php-ext-install pdo_sqlite
 
-    
+# Enable Apache mod_rewrite (needed for Laravel)
+RUN a2enmod rewrite
+
+# Copy your Apache configuration
+COPY laravel.conf /etc/apache2/sites-available/000-default.conf
+
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-COPY clockin/ /var/www/
+COPY clockin/ /var/www/html/
 
-WORKDIR /var/www/
+WORKDIR /var/www/html/
 
 COPY .env .env
 
 RUN composer install --no-dev --optimize-autoloader
 RUN php artisan key:generate
 
-RUN chown -R www-data:www-data /var/www \
-    && chmod -R 775 /var/www/storage \
-    && chmod -R 775 /var/www/bootstrap/cache
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 775 /var/www/html/storage \
+    && chmod -R 775 /var/www/html/bootstrap/cache
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 USER www-data
-EXPOSE 8000
+EXPOSE 80
 
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-CMD ["php-fpm"]
+CMD ["apache2-foreground"]

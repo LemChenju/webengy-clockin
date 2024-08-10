@@ -4,9 +4,11 @@ services:
       dockerfile: Dockerfile
     container_name: web
     ports:
-      - 8000:8000
+      - 8000:80
     volumes:
-      - web:/var/www
-      
+      - web:/var/www/html
+    environment:
+      - APACHE_RUN_USER=www-data
+      - APACHE_RUN_GROUP=www-data
 volumes:
   web:
