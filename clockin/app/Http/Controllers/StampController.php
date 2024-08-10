@@ -9,7 +9,7 @@ class StampController extends Controller
 {
     public function stampIn(Request $request)
     {
-        $user = auth()->user()->id;
+        $user = auth()->id();
         DB::table('stamps')->insert(
             array(
                 'user_id'     =>   $user,

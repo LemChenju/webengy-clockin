@@ -92,7 +92,7 @@
                         <a href="{{ route('clockinout') }}" class="btn btn-primary btn-lg">Zeiterfassung</a>
                     </div>
                     <div class="buttons ms-2">
-                        <a href="#">Urlaubsplanung</a>
+                        <a href="{{ route('showholiday') }}" class="btn btn-primary btn-lg">Urlaubsplanung</a>
                     </div>
                 </div>
             </div>

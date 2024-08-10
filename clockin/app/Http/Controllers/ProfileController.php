@@ -19,6 +19,10 @@ class ProfileController extends Controller
         return view('stamp-history');
     }
 
+    public function showholiday()
+    {
+        return view('holiday');
+    }
     public function showPasswordChangeForm()
     {
         return view('password_change');

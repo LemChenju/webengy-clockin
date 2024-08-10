@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\HolidayController;
 use App\Http\Controllers\StampController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
@@ -29,3 +30,5 @@ Route::get('/history',[ProfileController::class, 'history'])->name('history');
 Route::get('/stamp-in', [StampController::class, 'stampIn'])->name('stamp-in');
 Route::get('/stamp-out', [StampController::class, 'stampOut'])->name('stamp-out');
 Route::post('/generatePDF', [HistoryController::class, 'generatePDF'])->name('generate-pdf');
+Route::post('/store', [HolidayController::class, 'store'])->name('holiday');
+Route::get('/showholiday', [ProfileController::class, 'showholiday'])->name('showholiday');
