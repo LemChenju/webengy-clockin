@@ -18,7 +18,7 @@ git clone https://github.com/LemChenju/webengy-clockin.git && cd webengy-clockin
 docker compose up -d
 ```
 
-Container wird gebaut und hochgefahren - anschließend ist er unter `http://[host-ip]:8000/login` erreichbar
+Container wird gebaut und hochgefahren - anschließend ist er unter `http://localhost:8000/login` erreichbar
 
 ---
 
