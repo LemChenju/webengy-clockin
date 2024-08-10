@@ -73,6 +73,7 @@
     <div class="container py-4">
         <div class="p-5 mb-4 bg-light rounded-3 position-relative darkmodeChange">
             <h2 class="text-center darkmodeText">Stempelhistorie</h2>
+            <h4 class="text-center darkmodeText">Bitte beachten, dass die Stempelhistorie nur bis zum gestrigen Tag angezeigt werden kann.
             <form id="stampHistoryForm" action="{{ route('generate-pdf') }}" method="POST" target="_blank">
                 @csrf
                 <div class="row justify-content-center darkmodeText">
