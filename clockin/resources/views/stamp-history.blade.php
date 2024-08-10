@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webengy Clockin - Profil</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <style>
         body {
             background: #000000;
-            overflow-x: hidden; /* Verhindert horizontales Scrollen */
+            overflow-x: hidden; /* Prevents horizontal scrolling */
         }
         .bg-image {
             background-size: cover;
@@ -43,40 +44,85 @@
             padding: 15px 30px;
             font-size: 1.5rem;
         }
+        .datepicker {
+            background-color: white;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .ui-datepicker {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .ui-datepicker-header {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #ddd;
+            border-radius: 8px 8px 0 0;
+            padding: 10px;
+        }
+        .ui-datepicker-calendar {
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
 <section class="bg-image py-3 py-md-5" style="background-image: url('https://laravel.com/assets/img/welcome/background.svg');">
     <div class="container py-4">
         <div class="p-5 mb-4 bg-light rounded-3 position-relative darkmodeChange">
-            <div class="header position-absolute top-0 end-0 mt-3 me-3">
-            </div>
-            <div class="container-fluid py-5 form-container">
-                <div class="row mt-4">
-                    <div class="col buttons mt-4">
-                        <a href="{{ route('stamp-in') }}" class="btn btn-primary">Einstempeln</a>
+            <h2 class="text-center darkmodeText">Stempelhistorie</h2>
+            <form id="stampHistoryForm" action="{{ route('generate-pdf') }}" method="POST" target="_blank">
+                @csrf
+                <div class="row justify-content-center darkmodeText">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="start_date">Startdatum:</label>
+                            <input type="text" id="start_date" name="start_date" class="form-control datepicker" placeholder="Startdatum" required>
+                        </div>
                     </div>
-                    <div class="col buttons mt-4">
-                        <a href="{{ route('stamp-out') }}" class="btn btn-primary">Ausstempeln</a>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="end_date">Enddatum:</label>
+                            <input type="text" id="end_date" name="end_date" class="form-control datepicker" placeholder="Enddatum" required>
+                        </div>
                     </div>
                 </div>
-                <div class="buttons mt-4">
-                    <a href="{{ route('history') }}" class="btn btn-primary" style="padding: 15px 30px; font-size: 1.5rem;">Stempelhistorie Anzeigen</a>
+                <div class="row justify-content-center mt-4">
+                    <div class="col-md-2 text-center">
+                        <button type="submit" class="btn btn-primary">Bestätigen</button>
+                    </div>
                 </div>
-            </div>
-            <!-- Rückkehr zum Dashboard -->
-            <div class="mt-5 text-center darkmodeText">
-                <a href="{{ route('dashboard') }}" class="btn btn-primary btn-lg">Zurück zum Dashboard</a>
-            </div>
+            </form>
         </div>
     </div>
 </section>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $(function() {
+        $(".datepicker").datepicker({
+            dateFormat: "yy-mm-dd"
+        });
 
-<!-- Füge FontAwesome und Bootstrap JS hinzu -->
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.2/js/bootstrap.min.js"></script>
+        $('#stampHistoryForm').on('submit', function(e) {
+            var startDate = new Date($('#start_date').val());
+            var endDate = new Date($('#end_date').val());
+            var today = new Date();
+
+            if (startDate > endDate) {
+                alert('Das Startdatum darf nicht nach dem Enddatum liegen.');
+                e.preventDefault();
+            }
+
+            if (endDate > today) {
+                alert('Das Enddatum darf nicht in der Zukunft liegen.');
+                e.preventDefault();
+            }
+        });
+    });
+</script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         // Dark Mode Einstellung anwenden

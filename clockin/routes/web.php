@@ -1,4 +1,7 @@
 <?php
+
+use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\StampController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\ProfileController;
@@ -22,3 +25,7 @@ Route::post('/password/update', [ProfileController::class, 'updatePassword'])->n
 Route::post('/profile/image', [ProfileController::class, 'updateProfileImage'])->name('profile.image.update');
 Route::get('/settings', [ProfileController::class, 'showSettings'])->name('settings');
 Route::get('/clockinout',[ProfileController::class, 'clockinout'])->name('clockinout');
+Route::get('/history',[ProfileController::class, 'history'])->name('history');
+Route::get('/stamp-in', [StampController::class, 'stampIn'])->name('stamp-in');
+Route::get('/stamp-out', [StampController::class, 'stampOut'])->name('stamp-out');
+Route::post('/generatePDF', [HistoryController::class, 'generatePDF'])->name('generate-pdf');
