@@ -30,5 +30,4 @@ Route::get('/history',[ProfileController::class, 'history'])->name('history');
 Route::get('/stamp-in', [StampController::class, 'stampIn'])->name('stamp-in');
 Route::get('/stamp-out', [StampController::class, 'stampOut'])->name('stamp-out');
 Route::post('/generatePDF', [HistoryController::class, 'generatePDF'])->name('generate-pdf');
-Route::post('/store', [HolidayController::class, 'store'])->name('holiday');
-Route::get('/showholiday', [ProfileController::class, 'showholiday'])->name('showholiday');
+Route::post('/holiday', [HolidayController::class, 'store'])->name('holiday');
