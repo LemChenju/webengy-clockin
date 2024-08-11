@@ -128,19 +128,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const currentMonth = document.querySelector('input[name="currentMonth"]').value;
         const [year, month] = currentMonth.split('-').map(Number);
 
-        // Erstelle ein Datum für den ersten Tag des aktuellen Monats
         const newMonth = new Date(year, month);
 
-        // Setze den Monat auf den nächsten Monat
         newMonth.setMonth(newMonth.getMonth() - 1);
 
-        // Formatiere das Datum im Format "YYYY-MM"
         const newMonthStr = newMonth.toISOString().slice(0, 7);
 
-        // Aktualisiere das Eingabefeld mit dem neuen Monat
         document.querySelector('input[name="currentMonth"]').value = newMonthStr;
 
-        // Aktualisiere den Kalender oder führe andere notwendige Funktionen aus
         updateCalendar();
     });
 
@@ -149,19 +144,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const currentMonth = document.querySelector('input[name="currentMonth"]').value;
         const [year, month] = currentMonth.split('-').map(Number);
         
-        // Erstelle ein Datum für den ersten Tag des aktuellen Monats
         const newMonth = new Date(year, month);
         
-        // Setze den Monat auf den nächsten Monat
         newMonth.setMonth(newMonth.getMonth() + 1);
 
-        // Formatiere das Datum im Format "YYYY-MM"
         const newMonthStr = newMonth.toISOString().slice(0, 7);
 
-        // Aktualisiere das Eingabefeld mit dem neuen Monat
         document.querySelector('input[name="currentMonth"]').value = newMonthStr;
 
-        // Aktualisiere den Kalender oder führe andere notwendige Funktionen aus
         updateCalendar();
     });
 
