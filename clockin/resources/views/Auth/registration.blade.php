@@ -17,7 +17,7 @@
 </head>
 <body>
 
-<section class="bg-image py-3 py-md-5" style="background-image: url('https://laravel.com/assets/img/welcome/background.svg');">
+<section class="bg-image py-3 py-md-5 bg-dark" style="background-image: url('https://laravel.com/assets/img/welcome/background.svg');">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
